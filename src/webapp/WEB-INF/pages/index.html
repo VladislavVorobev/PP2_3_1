@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Users</title>
 </head>
 <body>
-<div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
+<div align="center">
+    <h2>Users table</h2>
+    <h3><a href="/new">Add new user</a></h3>
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    <br>
+    <tr th:each="u : ${users}">
+        <td th:utext="${u.id}"></td>
+        <td th:utext="${u.name}"></td>
+        <td th:utext="${u.surname}"></td>
+        <td th:utext="${u.email}"></td>
+        <td>
+            <a th:href="'/update?id='+${u.id}">Edit</a>
+            <a th:href="'/delete?id='+${u.id}">Delete</a>
+            <br>
+        </td>
+    </tr>
+    </table>
 </div>
 </body>
 </html>
