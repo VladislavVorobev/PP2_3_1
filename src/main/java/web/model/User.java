@@ -2,6 +2,8 @@ package web.model;
 
 import javax.persistence.*;
 import java.util.Objects;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -11,12 +13,17 @@ public class User {
     @Column(name = "id")
     private long id;
 
+    @NotBlank(message = "Name is required")
+    @Size(max = 50, message = "Name must be less than or equal to 50 characters")
     @Column(name = "name")
     private String name;
 
+    @NotBlank(message = "Surname is required")
+    @Size(max = 50, message = "Surname must be less than or equal to 50 characters")
     @Column(name = "surname")
     private String surname;
 
+    @NotBlank(message = "Email is required")
     @Column(name = "email")
     private String email;
 
