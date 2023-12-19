@@ -1,8 +1,11 @@
 package web.model;
 
+import org.hibernate.ObjectNotFoundException;
+
 import javax.persistence.*;
 import java.util.Objects;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,15 +19,18 @@ public class User {
     @NotBlank(message = "Name is required")
     @Size(max = 50, message = "Name must be less than or equal to 50 characters")
     @Column(name = "name")
+    @NotNull
     private String name;
 
     @NotBlank(message = "Surname is required")
     @Size(max = 50, message = "Surname must be less than or equal to 50 characters")
     @Column(name = "surname")
+    @NotNull
     private String surname;
 
     @NotBlank(message = "Email is required")
     @Column(name = "email")
+    @NotNull
     private String email;
 
     public User() {
@@ -44,15 +50,15 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getName() throws ObjectNotFoundException {
+       return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getSurname() {
+    public String getSurname()  {
         return surname;
     }
 
